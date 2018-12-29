@@ -2,9 +2,7 @@
 *    {7_seg.h}
 *    7_seg.c Header
 * 	 Group 1
-*        by Ryan Howard
-*		    Chris Baker
-* 			Dennis Dent 					
+*        by Ryan Howard				
 *
 *    PERFORMANCE:
 *	 Header file for 7_seg.c
