@@ -1,8 +1,6 @@
 /***********************************************************************************
 *    {PWM_C}
 *        by Ryan Howard
-*
-*
 *   Creates a software PWM pin using wiringpi software.
 *   Sets up the GPIO 13 pin to the water pump with a max value of 200.
 *   the speed of the motor is changed based on a counter from 1 to 48.
@@ -14,14 +12,14 @@
 #include <wiringPi.h>
 #include <softPwm.h>
 
-//define PWM pin number
+//define-PWM-pin-number-------------------------------------------
 #define PUMP 26
 int enablePWM(void)
 {
 
-    //Creates a software PWM with a max
-    //value of 200
-	softPwmCreate (PUMP, 0, 200);
+    //Creates-a-software-PWM-with=a-max---------------------------
+    //value-of-200------------------------------------------------
+	softPwmCreate(PUMP, 0, 200);
 
 return 0;
 }
