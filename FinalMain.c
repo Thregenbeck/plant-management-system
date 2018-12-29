@@ -40,8 +40,7 @@
 #define SensorMenu  19
 #define ManualMode 4
 #define SilentMode 8
- 
- 
+  
 //GPIO-Outputs--------------------------------------------------
 #define ManualModeLED 22
 #define SilentModeLED 18
@@ -59,17 +58,14 @@
  
 //Counter-variable----------------------------------------------
 int SensorButCounter;
- 
- 
+  
 int main(void)
 {
      //ADC-Readings-Variables-----------------------------------
      float TempVoltage;
      int SoilVoltage;
-     int LevelVoltage;
-     
+     int LevelVoltage;  
      wiringPiSetupGpio();
- 
      
      //declaring-Buttons-Switches-as-Inputs---------------------
      pinMode(SprinklerOn, INPUT);
@@ -89,7 +85,6 @@ int main(void)
      pinMode(WaterLowBuzzer, OUTPUT);
      digitalWrite(WaterLowBuzzer, HIGH);
      
-     
      //Intitalize-LCD-Settings----------------------------------
      int lcd;
      mcp23017Setup(BASE, 0x20);
@@ -106,10 +101,6 @@ int main(void)
      pinMode(DOWN, INPUT);
      pullUpDnControl(DOWN, PUD_UP);
      
-     
- 
-
-
      //Turns-Off-All-LEDS-and-Buzzer-Except-Power-on------------
      //and-Program-Start----------------------------------------
      digitalWrite(ManualModeLED, HIGH);
@@ -133,7 +124,7 @@ int main(void)
           TempVoltage = TempRead();
           SoilVoltage = SoilRead()*10;
           LevelVoltage = LevelRead()*10;
-
+	     
           //Turn-on-LED-if-Switch-is-Up-----------------------
           if (digitalRead(ManualMode) == HIGH)
           {
@@ -143,7 +134,6 @@ int main(void)
           {
               digitalWrite(ManualModeLED, HIGH);
           }
-      
           //Turn-on-LED-if-Switch-is-Up----------------------
           if (digitalRead(SilentMode) == LOW)
           {
@@ -173,7 +163,6 @@ int main(void)
               digitalWrite(SprinklerOnLED, HIGH);
               TogglePWM(0);
           }
- 
           //Turn-on-Soil-Low-LED-based-on-sensor-----------
           if (SoilVoltage < 20)
           {
@@ -184,9 +173,6 @@ int main(void)
               digitalWrite(SoilDryLED,HIGH);
           }
  
-          
-  
-
  	  //Turn-on-Water-Low-LED-Buzzer-and-7-seg-if-silent----
 	  //mode-switch-off-and-water-level-sensor-reading-<-26-
           if (LevelVoltage < 26 &&digitalRead(SilentMode)==HIGH)
@@ -227,17 +213,13 @@ int main(void)
               {
                    SensorButCounter = 1;
               }
-              lcdClear(lcd);
-              
+              lcdClear(lcd); 
           }
           prev_input = input;
-     
           //first-press-of-button-------------------------------
           if (SensorButCounter == 1)
           {
-              
-              displayLCD(2);
-              
+              displayLCD(2);   
           }
           //second-press-of-button------------------------------
           else if (SensorButCounter == 2)
@@ -247,13 +229,11 @@ int main(void)
               {
                    //Soil-Wet-LCD------------------------------
                    displayLCD(3);
-                   
               }
               else
               {
                    //Soil-Dry-LCD------------------------------
-                   displayLCD(4);
-                   
+                   displayLCD(4);     
               }
           }
           
@@ -262,20 +242,15 @@ int main(void)
           {
               //Full-Water-LCD---------------------------------
               if (LevelVoltage >= 26)
-              {
-                   
-                   displayLCD(5);
-                   
+              {  
+                   displayLCD(5);  
               }
               //Low-Water-LCD----------------------------------
               else if (LevelVoltage < 26)
               {
-                   
-                   displayLCD(7);
-                   
+                   displayLCD(7);     
               }
           }
- 
      }
      return 0;
 }    
