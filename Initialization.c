@@ -1,8 +1,7 @@
 /*******************************************************************************
 *    {adc.C}
 *    Analog to Digital Code for the ADS1115
-*        by David Purdie
-*        modified by Ryan Howard
+*        by Ryan Howard
 *
 *    PERFORMANCE:
 *    Contains several functions related to the ADS1115 analog digital 
