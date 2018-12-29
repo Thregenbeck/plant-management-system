@@ -1,14 +1,10 @@
 /************************************************************************************
 *    {adcTesting.c}
-* 	 Group 1
 *        by Ryan Howard
-*		    Chris Baker
-* 			Dennis Dent 					
-*
 *    PERFORMANCE:
 *	 Contains several functions related to the ADS1115 analog digital 
 *    converter's initialization and measuring. Saves the readings into a file to
-* 	 be able to use for interfacing
+*    be able to use for interfacing
 ************************************************************************************/
 //-included libraries----------------------------------------------------------------
 #include <stdio.h>
